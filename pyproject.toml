@@ -3,14 +3,11 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "csv_to_xlsx_report_fisherm7"
+name = "csv_to_xlsx_report"
 version = "0.0.1"
 dependencies = [
     "pandas >= 2.2.3",
     "xlsxwriter >= 3.2.3",
-]
-authors = [
-  { name="fisherm7", email="fisherm7" },
 ]
 description = "Modularized conversion of a csv file into a presentable executive spreadsheet."
 keywords = [

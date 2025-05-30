@@ -1,2 +1,3 @@
 /.venv
+/dist
 /csv_to_xlsx_report.code-workspace

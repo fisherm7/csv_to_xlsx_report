@@ -1,6 +1,9 @@
 Modularized conversion of a csv file into a presentable executive spreadsheet.  
-With parameterized keyword arguments, designed as part of an automated process
-to send weekly reports executed via cron.
+With parameterized formatting arguments, this program can fit into an  
+automation suite to send user-friendly reports with varying numbers of rows  
+and columns. The result is an Excel spreadsheet with a large title on line  
+zero, the table (a structured and formatted data range) beginning on line 3,  
+and a spreadsheet tab with a custom name.  
   
 Usage:  
 ```
