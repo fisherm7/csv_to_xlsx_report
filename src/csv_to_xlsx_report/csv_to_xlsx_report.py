@@ -93,8 +93,8 @@ def csv_to_xlsx(*,
     data_frame = import_data(clean_csv_report, numeric_columns)
     with pandas.ExcelWriter(outfile, engine='xlsxwriter') as xlsx_writer:
         (workbook, worksheet) = write_to_excel(data_frame,
-                                            xlsx_writer,
-                                            sheet_name
+                                               xlsx_writer,
+                                               sheet_name
         )
         add_data_as_table(data_frame, worksheet)
         auto_set_column_widths(data_frame, worksheet)
