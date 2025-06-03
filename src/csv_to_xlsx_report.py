@@ -79,12 +79,13 @@ def write_title(workbook: Workbook,
     title_format = workbook.add_format(title_format_dict)
     worksheet.write_string(0, 0, title_name, title_format)
 
-def csv_to_xlsx(infile: str,
-                outfile: str,
-                delimiter: str,
-                sheet_name: str,
-                title_name: str,
-                numeric_columns: list[str],
+def csv_to_xlsx(*,
+                infile: str = None,
+                outfile: str = None,
+                delimiter: str = None,
+                sheet_name: str = None,
+                title_name: str = None,
+                numeric_columns: list[str] = None,
                 title_format: dict = None
 ) -> None:
     title_format = title_format or {'bold': True, 'font_size': 14}
