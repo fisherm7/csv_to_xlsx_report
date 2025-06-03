@@ -68,8 +68,6 @@ def auto_set_column_widths(data_frame: DataFrame,
                             len(_column)
         )
         worksheet.set_column(_index, _index, column_length + 1)
-        # Enhancement: With > 50 char strings and default arial/calibri
-        # font, some columns are wider than needed.
 
 def write_title(workbook: Workbook,
                 worksheet: workbook.Worksheet,
