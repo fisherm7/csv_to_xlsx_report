@@ -1,3 +1,5 @@
 /.venv
 /dist
 /csv_to_xlsx_report.code-workspace
+.pytest_cache/
+__pycache__/

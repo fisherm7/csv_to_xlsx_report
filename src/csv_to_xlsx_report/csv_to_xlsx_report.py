@@ -21,6 +21,11 @@ def clean_data(csv_reader: csv.reader) -> list[int | str]:
         clean_row = [_col.strip() for _col in csv_row]
         if len(clean_row) > 1:
             clean_csv_report.append(clean_row)
+    if not clean_csv_report:
+        raise RuntimeError(
+            'Report is empty, or there is only 1 column. ' \
+            'Did you use the correct delimiter?'
+        )
     return clean_csv_report
 
 def import_data(clean_csv_report: list[int | str],
@@ -29,9 +34,11 @@ def import_data(clean_csv_report: list[int | str],
     header_row = clean_csv_report[0]
     del(clean_csv_report[0])
     data_frame = DataFrame(clean_csv_report, columns=header_row)
+    if numeric_columns is None:
+        return data_frame
     for _col in numeric_columns:
         data_frame[_col] = pandas.to_numeric(data_frame[_col],
-                                             errors='coerce'
+                                            errors='coerce'
         )
     return data_frame
 
@@ -80,12 +87,19 @@ def write_title(workbook: Workbook,
 def csv_to_xlsx(*,
                 infile: str = None,
                 outfile: str = None,
-                delimiter: str = None,
                 sheet_name: str = None,
                 title_name: str = None,
+                delimiter: str = '|',
                 numeric_columns: list[str] = None,
                 title_format: dict = None
 ) -> None:
+    for kw_arg_name, kw_arg_value in {"infile": infile,
+                                      "outfile": outfile,
+                                      "sheet_name": sheet_name,
+                                      "title_name": title_name
+    }.items():
+        if kw_arg_value is None:
+            raise ValueError(f"The {kw_arg_name} keyword argument is required.")
     title_format = title_format or {'bold': True, 'font_size': 14}
     with open(infile) as csv_infile:
         csv_reader = get_data(csv_infile, delimiter)
