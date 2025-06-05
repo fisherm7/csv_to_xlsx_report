@@ -1,5 +1,3 @@
-# TO DO: Support encoding
-
 # Standard libraries
 import csv
 from string import ascii_uppercase
