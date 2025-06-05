@@ -41,8 +41,8 @@ jobs:
       name: pypi
       url: https://pypi.org/p/csv-to-xlsx-report
 
-#    permissions:
-#      id-token: write
+   permissions:
+     id-token: write
 
     steps:
     - name: Download all the dists
@@ -64,8 +64,8 @@ jobs:
       name: testpypi
       url: https://test.pypi.org/p/csv-to-xlsx-report
 
-#    permissions:
-#      id-token: write
+   permissions:
+     id-token: write
 
     steps:
     - name: Download all the dists
