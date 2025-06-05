@@ -41,7 +41,7 @@ jobs:
       name: pypi
       url: https://pypi.org/p/csv-to-xlsx-report
 
-    permissions:
+#    permissions:
 #      id-token: write
 
     steps:
@@ -64,7 +64,7 @@ jobs:
       name: testpypi
       url: https://test.pypi.org/p/csv-to-xlsx-report
 
-    permissions:
+#    permissions:
 #      id-token: write
 
     steps:
