@@ -11,4 +11,5 @@
 - Peer review required for major changes.
 - Follow [PEP8 style](https://peps.python.org/pep-0008/).
 - Lint with flake8.
+- Run pytest.
 - Use docstrings.
