@@ -1,7 +1,7 @@
 # Standard libraries
 import csv
 from string import ascii_uppercase
-from typing import TextIO
+from typing import List, TextIO, Tuple, Union
 
 # Third party
 import pandas
@@ -13,7 +13,7 @@ def get_data(infile: TextIO, delimiter: str) -> csv.reader:
     csv_reader = csv.reader(infile, delimiter=delimiter)
     return csv_reader
 
-def clean_data(csv_reader: csv.reader) -> list[int | str]:
+def clean_data(csv_reader: csv.reader) -> List[Union[int, str]]:
     clean_csv_report = []
     for csv_row in csv_reader:
         clean_row = [_col.strip() for _col in csv_row]
@@ -26,8 +26,8 @@ def clean_data(csv_reader: csv.reader) -> list[int | str]:
         )
     return clean_csv_report
 
-def import_data(clean_csv_report: list[int | str],
-                numeric_columns: list[str]
+def import_data(clean_csv_report: List[Union[int, str]],
+                numeric_columns: List[str]
 ) -> DataFrame:
     header_row = clean_csv_report[0]
     del(clean_csv_report[0])
@@ -43,7 +43,7 @@ def import_data(clean_csv_report: list[int | str],
 def write_to_excel(data_frame: DataFrame,
                    xlsx_writer: xlsxwriter,
                    sheet_name: str
-) -> tuple[Workbook, workbook.Worksheet]:
+) -> Tuple[Workbook, workbook.Worksheet]:
     data_frame.to_excel(xlsx_writer,
                         sheet_name=sheet_name,
                         index=False,
@@ -88,7 +88,7 @@ def csv_to_xlsx(*,
                 sheet_name: str = None,
                 title_name: str = None,
                 delimiter: str = '|',
-                numeric_columns: list[str] = None,
+                numeric_columns: List[str] = None,
                 title_format: dict = None
 ) -> None:
     for kw_arg_name, kw_arg_value in {"infile": infile,
