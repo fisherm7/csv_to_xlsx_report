@@ -8,6 +8,6 @@ setup(
     name='csv_to_xlsx_report',
     version='0.0.4',
     packages=find_packages(include=['csv_to_xlsx_report.*']),
-    install_requires=['pandas >= 2.2.3',
+    install_requires=['pandas >= 1.3.5',
                       'xlsxwriter >= 3.2.3'],
 )
